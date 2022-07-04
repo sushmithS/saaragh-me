@@ -53,7 +53,7 @@ async def read_all(db:Session= Depends(get_db)):
 async def read_Emp(emp_id:int,db:Session=Depends(get_db)):
     #emp_model is the varible assigned
     emp_model=db.query(models.Emp)\
-        .filter(models.Emp.emp_id==id)\
+        .filter(models.Emp.emp_id==emp_id)\
         .first()
     if emp_model is not None:
         return emp_model
