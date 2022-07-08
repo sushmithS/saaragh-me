@@ -39,7 +39,7 @@ async def get_uploaded_file(file):
 def upload_image(file:UploadFile=File(...)):
     with open(f'{file.filename}',"wb") as buffer:
             shutil.copyfileobj(file.file,buffer)
-    return {"file_name":file.filename}
+    return FileResponse(file.filename)
 
 
 @app.post("/grey_file/")
@@ -49,4 +49,3 @@ async def create_upload_file(file:UploadFile):
     imgGray =img.convert('L')
     imgGray.save('test_gray.jpg')
     return FileResponse("test_gray.jpg")
-
